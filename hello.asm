@@ -1,0 +1,21 @@
+sestion .text
+	global _start
+_start:
+	mov edx,len
+	mov ecx,msg
+	mov ebx,1
+	mov eax,4
+	int 0x80
+
+	mov CL, msg[2]
+	mov ecx, end
+	mov ebx, 1
+	mov eax,4
+	int 0x80
+
+	mov eax,1
+	int 0x80
+section .data
+msg db 'Hello, world!', 0xa
+len equ $ - msg
+msg[2] db '*'
